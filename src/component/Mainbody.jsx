@@ -39,10 +39,10 @@ const Mainbody = () => {
     try {
       const dataa = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.65420&lng=77.23730&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
       const json = await dataa.json();
-      console.log(json)
+      // console.log(json)
       const restrolist = json?.data?.cards.filter((ele) => ele.card.card.id === "restaurant_grid_listing")
-      console.log(restrolist[0].card?.card?.gridElements?.infoWithStyle
-        ?.restaurants)
+      // console.log(restrolist[0].card?.card?.gridElements?.infoWithStyle
+      //   ?.restaurants)
       setrestlist(restrolist[0].card?.card?.gridElements?.infoWithStyle
         ?.restaurants)
       setfiltereddata(restrolist[0].card?.card?.gridElements?.infoWithStyle
@@ -59,9 +59,8 @@ const Mainbody = () => {
 
   return filtereddata.length === 0 ? (<Shimmer />) : (<div className='body'>
   <div className="">
-  <div className='flex justify-between'>
-        <input type="text" name='searchtext' value={searchtext} onChange={(e) => { setsearchtext(e.target.value)
-
+  <div className=''>
+        <input type="text" name='searchtext' className='h-25  border-t-2' value={searchtext} onChange={(e) => { setsearchtext(e.target.value)
         }}
         onKeyUp={() => {
           let filterdata = reslistdata.filter((res) =>{
@@ -80,19 +79,19 @@ const Mainbody = () => {
       <button className='px-2 bg-slate-800 hover:bg-slate-900 text-white' onClick={() => {
         const newdata = reslistdata.filter((res) => res.info.avgRating > 4)
         setfiltereddata(newdata)
-        console.log(newdata)
+        // console.log(newdata)
       }}
       >Top Rated Restaurant</button>
     </div>
   </div>
 
 
-    <div className=' flex flex-wrap justify-center'>
+    <div className=' flex flex-wrap justify-center relative'>
       {
         filtereddata.map((restro) => (
           <Link to={/restaurants/+restro.info.id}>
               {
-                restro.info.promoted
+                restro.info.isOpen
                 ? <Promotedcardwith resList={restro} />: <Restrocard resList={restro}  />
               }
               </Link>

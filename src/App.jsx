@@ -8,12 +8,14 @@ import Mainbody from "./component/Mainbody"
 import {Route, BrowserRouter as Router, Routes} from 'react-router-dom'
 import Restromenu from "./component/Restromenu"
 import { Suspense, lazy } from "react"
+import { UserdataContext } from "./context/User"
 // import Shimmer from "./component/Shimmer"
 
 const Grocery=lazy(()=>import("./component/Grocery"))
 
 function App() {
   return (
+    <UserdataContext>
     <Router>
         <Header/>
       <Routes>
@@ -29,6 +31,7 @@ function App() {
       </Routes>
 
     </Router>
+    </UserdataContext>
   )
 }
 

@@ -1,6 +1,4 @@
 import { useEffect,useState } from "react"
-
-
 const useRestromenu = (resid) => {
     const[resdata,setresdata]=useState(null)
 
@@ -14,7 +12,6 @@ const useRestromenu = (resid) => {
         console.log(restrojson.data.cards)
         setresdata(restrojson?.data)
     }
-
     return resdata;
 }
 

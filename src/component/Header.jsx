@@ -1,16 +1,18 @@
-import { useState } from "react"
-import logo from "../image/food-logo-59E5A73AFD-seeklogo.co.png"
+import { useContext, useState } from "react"
+import logo from "../image/letter-restaurant-logo-restauran.png"
 import "./head.css"
 import { Link, Outlet } from "react-router-dom"
 import useOnlinestatus from "../Utilities/useOnlinestatus"
+import { Usercontext } from "../context/User"
 const Header = () => {
   const[login,setlogin]=useState("login")
   const onstatus=useOnlinestatus()
+  const {username,setusername}=useContext(Usercontext)
 
 
   return (
-    <div className='flex justify-between items-center  bg-slate-900 text-white px-3  font-bold'>
-        <div className='w-20 h-14 ml-4 mt-4'>
+    <div className='flex justify-between items-center  bg-slate-900 text-white px-3 py-2  font-bold'>
+        <div className='w-[100px] h-[100px] ml-4'>
             <img src={logo} alt='...' className=''></img>
         </div>
         <div className='flex items-center'>
@@ -21,6 +23,8 @@ const Header = () => {
                   <Link to='contact'>Contact</Link>
                   <Link to='cart'>Cart</Link>
                   <Link to='grocery'>Grocery</Link>
+                  <Link to='grocery'>{username}</Link>
+                  <input type="text" value={username} name="username" className=" text-gray-950" onChange={(e)=>{setusername(e.target.value)}} />
                   {/* <Link to='item'>Item</Link> */}
                     <li onClick={()=>{login==="login" ? setlogin("logout") : setlogin("login")}}>{login}</li>
                 </ul>

@@ -35,7 +35,7 @@ export const Promotedcard=(Restrocard)=>{
   return(props)=>{
     return(
       <div>
-        <label className='absolute top-3 left-6 text-white bg-gray-800'>Promoted</label>
+        <label className='absolute mt-4 px-4 py-2 ml-1 text-white bg-gray-800'>Promoted</label>
         <Restrocard {...props}/>
       </div>
     )
