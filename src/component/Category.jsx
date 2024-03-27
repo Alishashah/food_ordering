@@ -1,7 +1,7 @@
 import React from 'react'
 import { IoIosArrowDown } from "react-icons/io";
 import Itemcategory from './Itemcategory';
-import { useState } from 'react';
+// import { useState } from 'react';
 
 const Category = ({data,items,setshowIndex}) => {
     // const[items,setitems]=useState(false)

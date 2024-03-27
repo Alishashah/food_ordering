@@ -1,7 +1,17 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
+import { addItem, removeItem } from '../store/cartSlice'
 
 const Itemcategory = ({show}) => {
-    console.log(show)
+const dispatch=useDispatch()
+    const handleadditem=(item)=>{
+        dispatch(addItem(item))
+    }
+
+    const deleteitem=()=>{
+        dispatch(removeItem())
+    }
+
   return (
     <div>
 {
@@ -24,7 +34,8 @@ const Itemcategory = ({show}) => {
             <img src={ "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_264,h_288,c_fill/"+ele.card.info.imageId
 } alt="kjkhg" />
 </div>
-    <button className='  bg-slate-900 p-2 rounded-lg text-white  absolute z-10 top-3  right-2'>ADD</button>
+    <button className='  bg-slate-900 p-2 rounded-lg text-white  absolute z-10 top-3  right-2' onClick={()=>{handleadditem(ele)}}>ADD</button>
+    {/* <button className='  bg-slate-900 p-2 rounded-lg text-white ' onClick={deleteitem}>delete</button> */}
 
             </div>
             </div>

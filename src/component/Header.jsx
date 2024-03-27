@@ -4,10 +4,12 @@ import "./head.css"
 import { Link, Outlet } from "react-router-dom"
 import useOnlinestatus from "../Utilities/useOnlinestatus"
 import { Usercontext } from "../context/User"
+import { useSelector } from "react-redux"
 const Header = () => {
   const[login,setlogin]=useState("login")
   const onstatus=useOnlinestatus()
   const {username,setusername}=useContext(Usercontext)
+  const cart=useSelector((store)=>store.cart.items)
 
 
   return (
@@ -21,7 +23,7 @@ const Header = () => {
                   <Link to=''>Home</Link>
                   <Link to='about'>About</Link>
                   <Link to='contact'>Contact</Link>
-                  <Link to='cart'>Cart</Link>
+                  <Link to='cart'>Cart ({cart.length} - item)</Link>
                   <Link to='grocery'>Grocery</Link>
                   <Link to='grocery'>{username}</Link>
                   <input type="text" value={username} name="username" className=" text-gray-950" onChange={(e)=>{setusername(e.target.value)}} />

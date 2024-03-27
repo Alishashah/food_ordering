@@ -58,9 +58,10 @@ const Mainbody = () => {
 
 
   return filtereddata.length === 0 ? (<Shimmer />) : (<div className='body'>
-  <div className="">
+  <div className=" flex m-5 gap-7 ">
   <div className=''>
-        <input type="text" name='searchtext' className='h-25  border-t-2' value={searchtext} onChange={(e) => { setsearchtext(e.target.value)
+        <input type="text" name='searchtext' placeholder='search your food' className=' bg-slate-300 p-2 text-black' value={searchtext} onChange={(e) => { setsearchtext(e.target.value)
+
         }}
         onKeyUp={() => {
           let filterdata = reslistdata.filter((res) =>{
@@ -76,7 +77,7 @@ const Mainbody = () => {
         }}>search</button> */}
         </div>
      <div>
-      <button className='px-2 bg-slate-800 hover:bg-slate-900 text-white' onClick={() => {
+      <button className='px-4 py-2  bg-slate-800 hover:bg-orange-700 text-white' onClick={() => {
         const newdata = reslistdata.filter((res) => res.info.avgRating > 4)
         setfiltereddata(newdata)
         // console.log(newdata)
@@ -86,12 +87,12 @@ const Mainbody = () => {
   </div>
 
 
-    <div className=' flex flex-wrap justify-center relative'>
+    <div className=' flex flex-wrap justify-center relative gap-10 mx-auto   w-11/12'>
       {
         filtereddata.map((restro) => (
           <Link to={/restaurants/+restro.info.id}>
               {
-                restro.info.isOpen
+                restro.info.isNewlyOnboarded
                 ? <Promotedcardwith resList={restro} />: <Restrocard resList={restro}  />
               }
               </Link>
